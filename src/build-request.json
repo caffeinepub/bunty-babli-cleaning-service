@@ -1,0 +1,162 @@
+{
+  "kind": "build_request",
+  "title": "Bunty Babli Cleaning Service Website (Marketing + Contact)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a responsive marketing website for “Bunty Babli Cleaning Service” with core sections: Hero (headline + short value proposition), Services, Pricing (or “Get a Quote” if pricing is not fixed), About, Service Area/Locations (generic text, no maps), Testimonials, FAQ, and Contact.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Bunty babli cleaning service wab site"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Homepage renders all specified sections and is usable on mobile and desktop.",
+        "Navigation allows jumping to each section (e.g., top nav anchors) and highlights/works correctly.",
+        "All user-facing text is in English and consistently uses the brand name “Bunty Babli Cleaning Service”."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add a contact/inquiry form that collects: full name, phone number, email (optional), service type (select), preferred date (optional), address/area (text), and message; validate required fields client-side and show success/error states.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Bunty babli cleaning service wab site"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Form prevents submission when required fields are missing and displays clear inline validation messages.",
+        "On successful submission, the form resets and a confirmation message is shown.",
+        "On failure, an error message is shown and the user can retry without losing entered data (except fields already validated)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement backend storage for contact/inquiry submissions in the single Motoko actor, including APIs to create an inquiry and list inquiries for basic review.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Bunty babli cleaning service wab site"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes a method to create/store an inquiry with timestamp.",
+        "Backend exposes a method to list stored inquiries (most recent first).",
+        "Data persists across canister upgrades using stable storage patterns appropriate for Motoko."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Wire the frontend contact form to the backend inquiry API using React Query for mutation state and error handling.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Bunty babli cleaning service wab site"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Submitting the form calls the backend method and displays loading state while pending.",
+        "React Query mutation handles and displays backend errors.",
+        "No direct backend calls from components without the established actor hook pattern; use existing actor access approach (without modifying immutable hook files)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create a coherent, distinctive visual theme for the site (colors, typography, spacing, component style) suitable for a local cleaning service brand, and apply it consistently across all sections. Avoid a blue/purple primary palette.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Bunty babli cleaning service wab site"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Theme is consistent across headings, buttons, cards, and section backgrounds.",
+        "Primary palette is not blue/purple; the site looks cohesive and intentional.",
+        "Components follow accessible contrast and readable typography on mobile and desktop."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add basic SEO and metadata: page title, meta description, and Open Graph tags for the Bunty Babli Cleaning Service homepage.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Bunty babli cleaning service wab site"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Browser tab title reflects the business name.",
+        "Meta description is present and relevant.",
+        "Open Graph title/description are set for link previews."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Generate and include required static images as frontend assets and use them in the UI (do not serve images through the backend). Place generated images under frontend/public/assets/generated and reference them from the homepage.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Bunty babli cleaning service wab site"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All required generated images exist under frontend/public/assets/generated.",
+        "Homepage uses the logo and hero image in the layout without broken links.",
+        "Service icons are used in the Services section (or feature cards) and render sharply on common screen densities."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor (all logic in backend/main.mo when present).",
+    "Do not modify files under frontend/src/components/ui (compose them only).",
+    "Do not modify immutable frontend hook entrypoints listed in SYSTEM_CONTEXT; integrate by adding new hooks/components instead."
+  ],
+  "nonGoals": [
+    "Online payments, subscriptions, or invoicing.",
+    "Real-time chat, SMS, push notifications, or email sending integrations.",
+    "Third-party auth providers (only Internet Identity is supported, but not required for this marketing site).",
+    "Maps, geolocation, or embedded location services."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Wordmark-style logo on transparent background, clean and friendly, with broom/sparkle motif (bunty-babli-logo.dim_512x512.png)",
+      "Wide hero banner illustration/photo-style graphic featuring a tidy home/office and cleaning tools, warm and welcoming (cleaning-hero.dim_1600x900.png)",
+      "Set of 4 simple line/flat icons: broom, spray bottle, mop, bucket (cleaning-icons-set.dim_512x512.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

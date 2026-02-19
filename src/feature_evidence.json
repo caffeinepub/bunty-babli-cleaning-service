@@ -1,0 +1,136 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-responsive-marketing-website-for-bunty-babli-cleaning-service-with-core-sections-hero-headline-short-value-proposition-services-pricing-or-get-a-quote-if-pricing-is-not-fixed-about-service-area-locations-generic-text-no-maps-testimonials-faq-and-contact",
+      "featureTitle": "Create a responsive marketing website for “Bunty Babli Cleaning Service” with core sections: Hero (headline + short value proposition), Services, Pricing (or “Get a Quote” if pricing is not fixed), About, Service Area/Locations (generic text, no maps), Testimonials, FAQ, and Contact.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/site/SiteHeader.tsx",
+        "frontend/src/components/site/sections/AboutSection.tsx",
+        "frontend/src/components/site/sections/ContactSection.tsx",
+        "frontend/src/components/site/sections/FaqSection.tsx",
+        "frontend/src/components/site/sections/HeroSection.tsx",
+        "frontend/src/components/site/sections/LocationsSection.tsx",
+        "frontend/src/components/site/sections/PricingOrQuoteSection.tsx",
+        "frontend/src/components/site/sections/ServicesSection.tsx",
+        "frontend/src/components/site/sections/TestimonialsSection.tsx",
+        "frontend/src/hooks/useActiveSection.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-contact-inquiry-form-that-collects-full-name-phone-number-email-optional-service-type-select-preferred-date-optional-address-area-text-and-message-validate-required-fields-client-side-and-show-success-error-states",
+      "featureTitle": "Add a contact/inquiry form that collects: full name, phone number, email (optional), service type (select), preferred date (optional), address/area (text), and message; validate required fields client-side and show success/error states.",
+      "files": [
+        "frontend/src/components/inquiry/InquiryForm.tsx",
+        "frontend/src/components/inquiry/ServiceTypeSelect.tsx",
+        "frontend/src/lib/validation/inquiryValidation.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-wire-the-frontend-contact-form-to-the-backend-inquiry-api-using-react-query-for-mutation-state-and-error-handling",
+      "featureTitle": "Wire the frontend contact form to the backend inquiry API using React Query for mutation state and error handling.",
+      "files": [
+        "frontend/src/components/inquiry/InquiryForm.tsx",
+        "frontend/src/hooks/useSubmitInquiry.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-coherent-distinctive-visual-theme-for-the-site-colors-typography-spacing-component-style-suitable-for-a-local-cleaning-service-brand-and-apply-it-consistently-across-all-sections-avoid-a-blue-purple-primary-palette",
+      "featureTitle": "Create a coherent, distinctive visual theme for the site (colors, typography, spacing, component style) suitable for a local cleaning service brand, and apply it consistently across all sections. Avoid a blue/purple primary palette.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/site/SiteLayout.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-basic-seo-and-metadata-page-title-meta-description-and-open-graph-tags-for-the-bunty-babli-cleaning-service-homepage",
+      "featureTitle": "Add basic SEO and metadata: page title, meta description, and Open Graph tags for the Bunty Babli Cleaning Service homepage.",
+      "files": [
+        "frontend/index.html"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-generate-and-include-required-static-images-as-frontend-assets-and-use-them-in-the-ui-do-not-serve-images-through-the-backend-place-generated-images-under-frontend-public-assets-generated-and-reference-them-from-the-homepage",
+      "featureTitle": "Generate and include required static images as frontend assets and use them in the UI (do not serve images through the backend). Place generated images under frontend/public/assets/generated and reference them from the homepage.",
+      "files": [
+        "frontend/src/components/site/SiteHeader.tsx",
+        "frontend/src/components/site/sections/HeroSection.tsx",
+        "frontend/src/components/site/sections/ServicesSection.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

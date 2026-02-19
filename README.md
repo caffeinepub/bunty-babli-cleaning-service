@@ -1,2 +1,3 @@
-# bunty-babli-cleaning-service
-Exported from Caffeine project: Bunty Babli Cleaning Service
+## Bunty Babli Cleaning Service
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

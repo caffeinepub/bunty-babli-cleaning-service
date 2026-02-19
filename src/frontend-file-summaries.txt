@@ -1,0 +1,22 @@
+{
+  "frontend/src/index.css": "Global styles with fresh green and citrus accent OKLCH color system for light/dark modes, custom fonts (Poppins for headings, Inter for body), and animation utilities.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with custom colors, fonts (Poppins heading, Inter sans), border radius, shadows, and fade-in animation.",
+  "frontend/index.html": "HTML entry point with SEO metadata, Open Graph tags, and Google Fonts preload for Poppins and Inter font families.",
+  "frontend/src/App.tsx": "Main application component rendering the single-page layout with header, all content sections (hero, services, pricing, about, locations, testimonials, FAQ, contact), and footer.",
+  "frontend/src/components/site/SiteLayout.tsx": "Simple layout wrapper component providing flex container structure for the entire site.",
+  "frontend/src/components/site/SiteHeader.tsx": "Sticky header with logo, responsive navigation menu with active section highlighting, mobile hamburger menu, and CTA button.",
+  "frontend/src/components/site/SiteFooter.tsx": "Footer component with copyright notice and attribution link to caffeine.ai with UTM tracking parameters.",
+  "frontend/src/hooks/useActiveSection.ts": "Custom hook using IntersectionObserver to track which section is currently visible in the viewport for navigation highlighting.",
+  "frontend/src/components/site/sections/HeroSection.tsx": "Hero section with headline, value proposition, background image, and dual CTAs for getting a quote and viewing services.",
+  "frontend/src/components/site/sections/ServicesSection.tsx": "Services section displaying four service cards (Home, Office, Deep, Move In/Out cleaning) with icons and descriptions.",
+  "frontend/src/components/site/sections/PricingOrQuoteSection.tsx": "Pricing section with feature list and CTA to request a custom quote, emphasizing personalized pricing.",
+  "frontend/src/components/site/sections/AboutSection.tsx": "About section with brand story and four value propositions (Trusted, Experienced, Quality, On Time) displayed with icons.",
+  "frontend/src/components/site/sections/LocationsSection.tsx": "Service areas section listing eight coverage zones with decorative map pin icon and generic text-only content.",
+  "frontend/src/components/site/sections/TestimonialsSection.tsx": "Testimonials section displaying three customer reviews with 5-star ratings in card layout.",
+  "frontend/src/components/site/sections/FaqSection.tsx": "FAQ section using shadcn Accordion component to display six expandable question-answer pairs.",
+  "frontend/src/components/site/sections/ContactSection.tsx": "Contact section with business information (phone, email, hours) and embedded inquiry form component.",
+  "frontend/src/components/inquiry/InquiryForm.tsx": "Contact form component with validation, loading states, success/error alerts, collecting name, phone, email, service type, date, address, and message.",
+  "frontend/src/components/inquiry/ServiceTypeSelect.tsx": "Reusable select dropdown component for choosing service type (Home, Office, Deep, Move In/Out cleaning).",
+  "frontend/src/lib/validation/inquiryValidation.ts": "Client-side form validation utility checking required fields, format validation for phone/email, and minimum length requirements.",
+  "frontend/src/hooks/useSubmitInquiry.ts": "React Query mutation hook that formats form data and submits inquiry to backend via actor, handling loading and error states."
+}

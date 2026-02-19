@@ -1,0 +1,203 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Bunty Babli Cleaning Service Marketing Site + Contact Form (Frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a responsive single-page marketing homepage with all required sections and anchor navigation.",
+      "acceptanceCriteria": [
+        "Homepage renders all specified sections and is usable on mobile and desktop.",
+        "Navigation allows jumping to each section (e.g., top nav anchors) and highlights/works correctly.",
+        "All user-facing text is in English and consistently uses the brand name “Bunty Babli Cleaning Service”."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the app root that renders a single-page homepage layout for Bunty Babli Cleaning Service and wires all required sections (Hero, Services, Pricing/Get a Quote, About, Service Area/Locations, Testimonials, FAQ, Contact) with stable anchor IDs for nav scrolling."
+        },
+        {
+          "path": "frontend/src/components/site/SiteHeader.tsx",
+          "operation": "create",
+          "description": "Create a sticky responsive header with brand wordmark and top navigation links to each on-page section anchor; include active-section highlighting behavior for the current scroll position."
+        },
+        {
+          "path": "frontend/src/hooks/useActiveSection.ts",
+          "operation": "create",
+          "description": "Add a small hook that tracks which section is currently in view (e.g., via IntersectionObserver) so the SiteHeader can highlight the active nav item."
+        },
+        {
+          "path": "frontend/src/components/site/sections/HeroSection.tsx",
+          "operation": "create",
+          "description": "Implement the Hero section (headline + short value proposition + call-to-action scroll to Contact) with responsive layout and hero image usage."
+        },
+        {
+          "path": "frontend/src/components/site/sections/ServicesSection.tsx",
+          "operation": "create",
+          "description": "Implement Services section using simple feature/service cards (and service icons image set where appropriate) with consistent English copy for Bunty Babli Cleaning Service."
+        },
+        {
+          "path": "frontend/src/components/site/sections/PricingOrQuoteSection.tsx",
+          "operation": "create",
+          "description": "Implement Pricing section or a 'Get a Quote' variant (per requirement) with clear messaging and CTA to contact form; keep content generic (no payments)."
+        },
+        {
+          "path": "frontend/src/components/site/sections/AboutSection.tsx",
+          "operation": "create",
+          "description": "Implement About section with brand story and trust signals in English."
+        },
+        {
+          "path": "frontend/src/components/site/sections/LocationsSection.tsx",
+          "operation": "create",
+          "description": "Implement Service Area/Locations section using generic text only (no maps, no embedded location services)."
+        },
+        {
+          "path": "frontend/src/components/site/sections/TestimonialsSection.tsx",
+          "operation": "create",
+          "description": "Implement Testimonials section with a small set of well-formatted testimonial cards; ensure responsive readability."
+        },
+        {
+          "path": "frontend/src/components/site/sections/FaqSection.tsx",
+          "operation": "create",
+          "description": "Implement FAQ section using shadcn-ui Accordion components for expandable Q&A items. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/site/sections/ContactSection.tsx",
+          "operation": "create",
+          "description": "Create the Contact section wrapper that contains contact details text and embeds the inquiry form component built for REQ-2 (with anchor ID matching nav)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add a validated contact/inquiry form with required fields and success/error states.",
+      "acceptanceCriteria": [
+        "Form prevents submission when required fields are missing and displays clear inline validation messages.",
+        "On successful submission, the form resets and a confirmation message is shown.",
+        "On failure, an error message is shown and the user can retry without losing entered data (except fields already validated)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/inquiry/InquiryForm.tsx",
+          "operation": "create",
+          "description": "Implement the inquiry form UI collecting: full name, phone number, email (optional), service type (select), preferred date (optional), address/area (text), and message. Provide client-side validation with inline errors; show success confirmation and error retry state. Use shadcn-ui form inputs (e.g., Input, Textarea, Select, Button) by composing from frontend/src/components/ui without modifying them. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/lib/validation/inquiryValidation.ts",
+          "operation": "create",
+          "description": "Add a small validation utility (e.g., required checks, basic phone/email format rules, field labeling) used by InquiryForm to produce clear inline validation messages."
+        },
+        {
+          "path": "frontend/src/components/inquiry/ServiceTypeSelect.tsx",
+          "operation": "create",
+          "description": "Create a reusable service-type select component for the form (e.g., Home cleaning, Office cleaning, Deep cleaning, Move-in/out) using shadcn-ui Select composition. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Wire the contact form submission to the backend inquiry function using React Query mutation and the existing actor hook pattern.",
+      "acceptanceCriteria": [
+        "Submitting the form calls the backend method and displays loading state while pending.",
+        "React Query mutation handles and displays backend errors.",
+        "No direct backend calls from components without the established actor hook pattern; use existing actor access approach (without modifying immutable hook files)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useSubmitInquiry.ts",
+          "operation": "create",
+          "description": "Create a React Query mutation hook that uses the existing useActor() hook to call the backend capability submitInquiry(name, email, message). Map the full form fields into the backend's supported parameters (e.g., pass email or empty string; format phone/service type/date/address/message into a single message payload) and surface mutation loading/error/success state to the form."
+        },
+        {
+          "path": "frontend/src/components/inquiry/InquiryForm.tsx",
+          "operation": "modify",
+          "description": "Integrate useSubmitInquiry() into the form: on submit, run client validation, call the mutation, show pending UI state, reset on success, and preserve entered values on backend failure while showing a clear error message (no direct actor calls inside the component). Use shadcn-ui Alert (or similar) composition for status messaging if available. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create a cohesive, distinctive (non-blue/purple) visual theme and apply it consistently across sections.",
+      "acceptanceCriteria": [
+        "Theme is consistent across headings, buttons, cards, and section backgrounds.",
+        "Primary palette is not blue/purple; the site looks cohesive and intentional.",
+        "Components follow accessible contrast and readable typography on mobile and desktop."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add global styling and theme tokens (CSS variables used by Tailwind/shadcn color system) with a distinctive non-blue/purple primary palette (e.g., fresh green + warm citrus accent), consistent typography, spacing defaults, and accessible contrast."
+        },
+        {
+          "path": "frontend/src/components/site/SiteLayout.tsx",
+          "operation": "create",
+          "description": "Create a layout wrapper that applies consistent section spacing, background alternation, container widths, and shared button/link styling conventions across the homepage sections."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap the homepage with SiteLayout and ensure all sections use consistent component styling (cards, headings, CTAs) aligned with the global theme."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add SEO metadata: title, meta description, and Open Graph tags for the homepage.",
+      "acceptanceCriteria": [
+        "Browser tab title reflects the business name.",
+        "Meta description is present and relevant.",
+        "Open Graph title/description are set for link previews."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Add/confirm page title 'Bunty Babli Cleaning Service', include a relevant meta description, and add Open Graph tags (og:title, og:description, and optional og:image pointing to the generated hero/logo asset) for link previews."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Include required generated static images as frontend assets and use them in the homepage UI.",
+      "acceptanceCriteria": [
+        "All required generated images exist under frontend/public/assets/generated.",
+        "Homepage uses the logo and hero image in the layout without broken links.",
+        "Service icons are used in the Services section (or feature cards) and render sharply on common screen densities."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/bunty-babli-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated logo asset at the exact required path: frontend/public/assets/generated/bunty-babli-logo.dim_512x512.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/cleaning-hero.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated hero image asset at the exact required path: frontend/public/assets/generated/cleaning-hero.dim_1600x900.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/cleaning-icons-set.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated service icons sprite/set asset at the exact required path: frontend/public/assets/generated/cleaning-icons-set.dim_512x512.png."
+        },
+        {
+          "path": "frontend/src/components/site/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Render the logo image from frontend/public/assets/generated/bunty-babli-logo.dim_512x512.png in the header branding area and ensure it scales cleanly for mobile/desktop."
+        },
+        {
+          "path": "frontend/src/components/site/sections/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Use the hero banner image from frontend/public/assets/generated/cleaning-hero.dim_1600x900.png in the Hero section layout with responsive sizing and appropriate alt text."
+        },
+        {
+          "path": "frontend/src/components/site/sections/ServicesSection.tsx",
+          "operation": "modify",
+          "description": "Display the service icons from frontend/public/assets/generated/cleaning-icons-set.dim_512x512.png within Services cards (e.g., as cropped icons) and ensure they render sharply on common screen densities."
+        }
+      ]
+    }
+  ]
+}

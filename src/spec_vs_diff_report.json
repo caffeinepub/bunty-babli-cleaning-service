@@ -1,0 +1,80 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-14T15:47:42.266Z",
+  "summary": "Frontend implements a multi-section marketing homepage with anchor navigation and an inquiry form wired via a React Query mutation to a backend submit method. However, backend inquiry storage does not meet the spec (missing timestamp, stable upgrade persistence, and most-recent-first listing), SEO metadata changes are not evidenced, and required generated service icons are not used (lucide icons are used instead). Backend also adds unrelated user profile/access-control features not requested.",
+  "missing_requirements": [
+    {
+      "id": "REQ-3",
+      "requirement": "Implement backend storage for contact/inquiry submissions with timestamp, list inquiries (most recent first), and persist data across canister upgrades using stable storage patterns.",
+      "reason": "The backend Inquiry type contains only {name, email, message} with no timestamp; inquiries are stored in an in-memory List without any stable storage/upgrade hooks; list ordering is not shown as most-recent-first (and List.values().toArray() does not demonstrate reverse order).",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "requirement": "Add basic SEO and metadata: page title, meta description, and Open Graph tags for the homepage.",
+      "reason": "No diff evidence shows changes/additions to HTML head metadata (e.g., index.html, Helmet usage, or equivalent). Only App/layout/components and CSS are shown.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "Use the generated service icons (broom, spray bottle, mop, bucket) from frontend/public/assets/generated in the Services section (or feature cards).",
+      "reason": "Services section uses lucide-react icons (Home, Building2, Sparkles, Package) rather than referencing generated icon assets under /assets/generated/cleaning-icons-set.dim_512x512.png or individual icons derived from it.",
+      "evidence": [
+        "frontend/src/components/site/sections/ServicesSection.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "User profile storage and access-controlled profile APIs (getCallerUserProfile, getUserProfile, saveCallerUserProfile) plus authorization mixin initialization.",
+      "reason": "BuildRequest is a marketing + contact site and only requests inquiry submission storage/listing; it explicitly lists third-party auth as a non-goal and does not request user profiles or authorization systems beyond what is needed for inquiry review.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Admin-token-based access-control initialization on actor creation in the frontend hook.",
+      "reason": "Not requested by the BuildRequest; the site does not require authentication/authorization features for the marketing/contact flow.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/inquiry/InquiryForm.tsx",
+    "frontend/src/components/inquiry/ServiceTypeSelect.tsx",
+    "frontend/src/components/site/SiteFooter.tsx",
+    "frontend/src/components/site/SiteHeader.tsx",
+    "frontend/src/components/site/SiteLayout.tsx",
+    "frontend/src/components/site/sections/AboutSection.tsx",
+    "frontend/src/components/site/sections/ContactSection.tsx",
+    "frontend/src/components/site/sections/FaqSection.tsx",
+    "frontend/src/components/site/sections/HeroSection.tsx",
+    "frontend/src/components/site/sections/LocationsSection.tsx",
+    "frontend/src/components/site/sections/PricingOrQuoteSection.tsx",
+    "frontend/src/components/site/sections/ServicesSection.tsx",
+    "frontend/src/components/site/sections/TestimonialsSection.tsx",
+    "frontend/src/hooks/useActiveSection.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useSubmitInquiry.ts",
+    "frontend/src/index.css",
+    "frontend/src/lib/validation/inquiryValidation.ts",
+    "frontend/src/main.tsx",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}
